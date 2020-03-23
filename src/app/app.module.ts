@@ -10,10 +10,11 @@ import { RegisterComponent } from "./login/register.component";
 
 // MODULOS
 import { PagesModule } from "./pages/pages.module";
+import { FormsModule } from "@angular/forms";
 
 @NgModule({
   declarations: [AppComponent, LoginComponent, RegisterComponent],
-  imports: [BrowserModule, AppRoutingModule, PagesModule],
+  imports: [BrowserModule, AppRoutingModule, PagesModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent]
 })
