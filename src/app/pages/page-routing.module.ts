@@ -8,16 +8,47 @@ import { ProgressComponent } from "./progress/progress.component";
 import { Graficas1Component } from "./graficas1/graficas1.component";
 import { NopagefoundComponent } from "../shared/nopagefound/nopagefound.component";
 import { AccountSettingsComponent } from "./account-settings/account-settings.component";
+import { PromesasComponent } from "./promesas/promesas.component";
+import { RxjsComponent } from "./rxjs/rxjs.component";
 
 const PagesRoutes: Routes = [
   {
     path: "",
     component: PagesComponent,
     children: [
-      { path: "dashboard", component: DashboardComponent },
-      { path: "progress", component: ProgressComponent },
-      { path: "graficas1", component: Graficas1Component },
-      { path: "account-settings", component: AccountSettingsComponent },
+      {
+        path: "dashboard",
+        component: DashboardComponent,
+        data: { titulo: "Dashboard", description: "Aquí va una descripcion" }
+      },
+      {
+        path: "progress",
+        component: ProgressComponent,
+        data: { titulo: "Progress", description: "Aquí va una descripcion" }
+      },
+      {
+        path: "graficas1",
+        component: Graficas1Component,
+        data: { titulo: "Graficas", description: "Aquí va una descripcion" }
+      },
+      {
+        path: "account-settings",
+        component: AccountSettingsComponent,
+        data: {
+          titulo: "Account Settings",
+          description: "Aquí va una descripcion"
+        }
+      },
+      {
+        path: "promesas",
+        component: PromesasComponent,
+        data: { titulo: "Promesas", description: "Aquí va una descripcion" }
+      },
+      {
+        path: "rxjs",
+        component: RxjsComponent,
+        data: { titulo: "Observables", description: "Aquí va una descripcion" }
+      },
       { path: "", redirectTo: "/dashboard", pathMatch: "full" }
     ]
   },
