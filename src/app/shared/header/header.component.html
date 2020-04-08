@@ -30,7 +30,7 @@
           <img
             src="../assets/images/logo-text.png"
             alt="homepage"
-            class="dark-logo"/>
+            class="dark-logo" />
           <!-- Light Logo text -->
           <img
             src="../assets/images/logo-light-text.png"
@@ -211,14 +211,15 @@
                             </li>
                             <li role="separator" class="divider"></li>
                             <li>
-                                <a href="#"><i class="fa fa-power-off"></i> Logout</a>
-                            </li>
-                        </ul>
-                        </div>
-                </li>
+                                <a class="pointer" (click)="this._usuarioService.logout()"><i class="fa fa-power-off"></i> Logout</a
+                >
+              </li>
             </ul>
-            </div>
-    </nav>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
 </header>
 
 <!-- ============================================================== -->

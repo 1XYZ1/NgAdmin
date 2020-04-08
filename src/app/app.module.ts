@@ -10,8 +10,9 @@ import { RegisterComponent } from "./login/register.component";
 
 // MODULOS
 import { PagesModule } from "./pages/pages.module";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { ServiceModule } from "./services/service.module";
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [AppComponent, LoginComponent, RegisterComponent],
@@ -20,9 +21,11 @@ import { ServiceModule } from "./services/service.module";
     AppRoutingModule,
     PagesModule,
     FormsModule,
-    ServiceModule
+    ReactiveFormsModule,
+    ServiceModule,
+    HttpClientModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
