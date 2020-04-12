@@ -6,6 +6,7 @@ import { URL_SERVICIOS } from "src/app/config/config";
 import { map } from "rxjs/operators";
 import Swal from "sweetalert2";
 import { Router } from "@angular/router";
+import { SubirArchivosService } from "../subir-archivos/subir-archivos.service";
 
 @Injectable({
   providedIn: "root",
@@ -13,8 +14,11 @@ import { Router } from "@angular/router";
 export class UsuarioService {
   usuario: Usuario;
   token: string;
-  constructor(private http: HttpClient, public router: Router) {
-    console.log("Servicio listo");
+  constructor(
+    private http: HttpClient,
+    public router: Router,
+    public _subirArchivo: SubirArchivosService
+  ) {
     this.cargarStorage();
   }
 
@@ -56,7 +60,6 @@ export class UsuarioService {
 
     return this.http.post(url, { token }).pipe(
       map((resp: any) => {
-        console.log(resp);
         this.guardarStorage(resp.id, resp.token, resp.usuario);
         return true;
       })
@@ -81,6 +84,45 @@ export class UsuarioService {
         return true;
       })
     );
+  }
+
+  actualizarUsuario(usuario: Usuario) {
+    let url =
+      URL_SERVICIOS + "/usuario/" + usuario._id + "?token=" + this.token;
+    return this.http.put(url, usuario).pipe(
+      map((resp: any) => {
+        let usuarioDB = resp.usuario;
+        this.usuario = resp.usuario;
+        this.guardarStorage(usuarioDB._id, this.token, usuarioDB);
+        Swal.fire({
+          title: "Buen trabajo! " + usuarioDB.nombre,
+          text: "Actualizacion completa",
+          icon: "success",
+          confirmButtonText: "Ok",
+        });
+        return true;
+      })
+    );
+  }
+
+  actualizarImagen(archivo: File) {
+    this._subirArchivo
+      .subirArchivo(archivo, "usuarios", this.usuario._id)
+      .then((resp: any) => {
+        let user = JSON.parse(resp);
+        this.usuario.img = user.usuario.img;
+        this.guardarStorage(this.usuario._id, this.token, this.usuario);
+
+        Swal.fire({
+          title: "Buen trabajo! " + this.usuario.nombre,
+          text: "Imagen actualizada correctamente",
+          icon: "success",
+          confirmButtonText: "Ok",
+        });
+      })
+      .catch((resp) => {
+        console.log(resp);
+      });
   }
 
   crearUsuario(usuario: Usuario) {

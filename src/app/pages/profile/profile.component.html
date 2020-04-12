@@ -1,0 +1,54 @@
+<div class="row">
+    <div class="col-lg-7">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Perfil del usuario</h4>
+                <h6 class="card-subtitle">welcome</h6>
+                <form ngNativeValidate #f="ngForm" (ngSubmit)="guardar(f.value)" class="form p-t-20">
+                    <div class="form-group">
+                        <label for="exampleInputuname2">Nombre</label>
+                        <div class="input-group">
+                            <input type="text" name="nombre" class="form-control" [ngModel]="usuario.nombre" placeholder="Nombre de usuario" required />
+                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail2">Email address</label>
+                        <div class="input-group">
+                            <input type="email" name="email" class="form-control" [disabled]="usuario.google" [ngModel]="usuario.email" placeholder="Email de usuario" required />
+                            <div class="input-group-addon"><i class="ti-email"></i></div>
+                        </div>
+                    </div>
+
+                    <div class="text-left">
+                        <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">
+              <i class="fa fa-save"></i>
+              Guardar
+            </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-5">
+        <div class="card">
+            <div class="card-body" align="center">
+                <h4 class="card-title">Fotografía del usuario</h4>
+                <h6 class="card-subtitle">Foto</h6>
+
+                <img *ngIf="!imagenTemporal" [src]="usuario.img | imagen" width="150px" alt="{{ usuario.nombre }}" />
+                <img *ngIf="imagenTemporal" [src]="imagenTemporal" width="150px" alt="{{ usuario.nombre }}" />
+                <br /><br />
+                <input type="file" class="form-control" (change)="seleccionImagen($event.target.files[0])" aria-describedby="fileHelp" />
+
+                <br />
+                <br />
+                <button (click)="actualizarImagen()" type="submit" class="btn btn-success waves-effect waves-light m-r-10">
+          <i class="fa fa-save"></i>
+          Actualizar foto
+        </button>
+            </div>
+        </div>
+    </div>
+</div>

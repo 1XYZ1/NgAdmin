@@ -7,13 +7,16 @@ import { SharedModule } from "../shared/shared.module";
 import { PageRoutingModule } from "./page-routing.module";
 import { FormsModule } from "@angular/forms";
 import { ChartsModule } from "ng2-charts";
-
+// Pipes
+import { PipesModule } from "../pipes/pipes.module";
 // Componentes personalizados
 import { IncrementadorComponent } from "../components/incrementador/incrementador.component";
 import { GraficoDonaComponent } from "../components/grafico-dona/grafico-dona.component";
-import { AccountSettingsComponent } from './account-settings/account-settings.component';
-import { PromesasComponent } from './promesas/promesas.component';
-import { RxjsComponent } from './rxjs/rxjs.component';
+import { AccountSettingsComponent } from "./account-settings/account-settings.component";
+import { PromesasComponent } from "./promesas/promesas.component";
+import { RxjsComponent } from "./rxjs/rxjs.component";
+import { ProfileComponent } from "./profile/profile.component";
+import { CommonModule } from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -25,15 +28,23 @@ import { RxjsComponent } from './rxjs/rxjs.component';
     GraficoDonaComponent,
     AccountSettingsComponent,
     PromesasComponent,
-    RxjsComponent
+    RxjsComponent,
+    ProfileComponent,
   ],
-  imports: [SharedModule, PageRoutingModule, FormsModule, ChartsModule],
+  imports: [
+    CommonModule,
+    SharedModule,
+    PageRoutingModule,
+    FormsModule,
+    ChartsModule,
+    PipesModule,
+  ],
   exports: [
     PagesComponent,
     DashboardComponent,
     ProgressComponent,
-    Graficas1Component
+    Graficas1Component,
   ],
-  providers: []
+  providers: [],
 })
 export class PagesModule {}

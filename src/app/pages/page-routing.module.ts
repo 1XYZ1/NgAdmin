@@ -11,6 +11,7 @@ import { AccountSettingsComponent } from "./account-settings/account-settings.co
 import { PromesasComponent } from "./promesas/promesas.component";
 import { RxjsComponent } from "./rxjs/rxjs.component";
 import { LoginGuardGuard } from "../services/service.index";
+import { ProfileComponent } from "./profile/profile.component";
 
 const PagesRoutes: Routes = [
   {
@@ -50,6 +51,11 @@ const PagesRoutes: Routes = [
         path: "rxjs",
         component: RxjsComponent,
         data: { titulo: "Observables", description: "Aquí va una descripcion" },
+      },
+      {
+        path: "profile",
+        component: ProfileComponent,
+        data: { titulo: "Perfil", description: "Aquí va una descripcion" },
       },
       { path: "", redirectTo: "/dashboard", pathMatch: "full" },
     ],

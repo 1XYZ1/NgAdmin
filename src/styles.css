@@ -11,3 +11,7 @@
     cursor: pointer;
     color: red !important;
 }
+
+.disabled {
+    background: gray !important;
+}

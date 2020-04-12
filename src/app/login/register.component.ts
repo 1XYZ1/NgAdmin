@@ -57,8 +57,6 @@ export class RegisterComponent implements OnInit {
     };
   }
   crearUsuario() {
-    console.log(this.forma.value);
-
     if (!this.forma.value.condiciones) {
       Swal.fire({
         title: "Oops!",

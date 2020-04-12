@@ -2,12 +2,12 @@ import { Injectable, Inject } from "@angular/core";
 import { DOCUMENT } from "@angular/common";
 
 @Injectable({
-  providedIn: "root"
+  providedIn: "root",
 })
 export class SettingsService {
   ajustes: Ajustes = {
     temaUrl: "assets/css/colors/default.css",
-    tema: "default"
+    tema: "default",
   };
   constructor(@Inject(DOCUMENT) private _document) {
     this.cargarAjustes();
@@ -15,7 +15,6 @@ export class SettingsService {
 
   guardarAjustes() {
     localStorage.setItem("ajustes", JSON.stringify(this.ajustes));
-    console.log("Ajustes guardados");
   }
   cargarAjustes() {
     if (localStorage.getItem("ajustes")) {
